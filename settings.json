@@ -1,4 +1,14 @@
 {
   "description": "A nunjucks template",
-  "production": false
+  "production": false,
+  "navigation": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Link1",
+      "url": "/link1"
+    }
+  ]
 }

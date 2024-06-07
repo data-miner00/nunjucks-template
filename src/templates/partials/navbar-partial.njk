@@ -1,6 +1,10 @@
 
 {% if production %}
-<nav>Navbar works!</nav>
+<nav>
+    {% for item in navigation %}
+    <a href="{{item.url}}">{{item.name}}</a>
+    {% endfor %}
+</nav>
 {% else %}
 <nav>Navbar not works!</nav>
 {% endif %}
