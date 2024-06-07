@@ -2,6 +2,12 @@ var gulp = require("gulp");
 var nunjucks = require("gulp-nunjucks-render");
 var data = require("gulp-data");
 
+var manageEnv = function (environment) {
+  environment.addFilter("split", function (str, delim) {
+    return str.split(delim) ?? [];
+  });
+};
+
 gulp.task("nunjucks", function () {
   return gulp
     .src("src/*")
@@ -10,7 +16,7 @@ gulp.task("nunjucks", function () {
         return require("./settings.json");
       })
     )
-    .pipe(nunjucks({ path: ["src/templates"], ext: ".html" }))
+    .pipe(nunjucks({ path: ["src/templates"], ext: ".html", manageEnv }))
     .pipe(gulp.dest("dist"));
 });
 

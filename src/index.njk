@@ -2,4 +2,22 @@
 {% extends "layout.njk" %}
 {% block body %}
     <h1>Hello world</h1>
+
+    <div>
+    {# Sample use of filters #}
+    {% set items = [1,2,3,4,5,6] %}
+    {% set dash = joiner("-") %}
+    {% for item in items | batch(2) %}
+        {{ dash() }} {% for items in item %}
+        {{ items }}
+        {% endfor %}
+    {% endfor %}
+    </div>
+
+    <div>
+        {% set foo = "This Is A Test Foo" %}
+        {{ foo | title | center }}
+        {{ foo | split(" ") | join(",") }}
+        {{ foo | capitalize | replace("foo", "bar") }}
+    </div>
 {% endblock %}
