@@ -1,3 +1,4 @@
 {
-  "description": "A nunjucks template"
+  "description": "A nunjucks template",
+  "production": false
 }
