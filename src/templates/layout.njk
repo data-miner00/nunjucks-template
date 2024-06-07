@@ -8,6 +8,8 @@
         {% include "partials/navbar-partial.njk" %}
         {% block body %}{% endblock %}
 
-        {% block scripts %}{% endblock %}
+        {% block scripts %}
+            <script>console.log('default scripts');</script>
+        {% endblock %}
     </body>
 </html>
