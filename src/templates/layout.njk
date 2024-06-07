@@ -6,8 +6,8 @@
     </head>
     <body>
         {% include "partials/navbar-partial.njk" %}
-        {% block body %}
+        {% block body %}{% endblock %}
 
-        {% endblock %}
+        {% block scripts %}{% endblock %}
     </body>
 </html>
