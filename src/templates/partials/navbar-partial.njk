@@ -2,7 +2,13 @@
 {% if production %}
 <nav>
     {% for item in navigation %}
-    <a href="{{item.url}}">{{item.name}}</a>
+        {% if loop.first %}
+        <a href="{{item.url}}">First! {{item.name}}</a>
+        {% elif loop.last %}
+        <a href="{{item.url}}">Last! {{item.name}}</a>
+        {% else %}
+        <a href="{{item.url}}">{{item.name}}</a>
+        {% endif %}
     {% endfor %}
 </nav>
 {% else %}
