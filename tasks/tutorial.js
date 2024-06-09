@@ -1,4 +1,5 @@
 var gulp = require("gulp");
+var { SRC_PATH, DIST_PATH } = require("./variables");
 
 function manual(done) {
   console.log("works manual");
@@ -10,7 +11,7 @@ async function promise() {
 }
 
 function stream() {
-  return gulp.src("/src/*").pipe(gulp.dest("dist"));
+  return gulp.src(`${SRC_PATH}/*`).pipe(gulp.dest(DIST_PATH));
 }
 
 module.exports = {

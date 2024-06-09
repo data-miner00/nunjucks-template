@@ -3,6 +3,7 @@ var nunjucksRender = require("gulp-nunjucks-render");
 var prettier = require("prettier");
 var through2 = require("through2");
 var data = require("gulp-data");
+var { SRC_PATH, NJK_TEMPLATE_PATH, DIST_PATH } = require("./variables");
 
 var prettierConfig = require("../.prettierrc.json");
 
@@ -28,7 +29,7 @@ var manageEnv = function (environment) {
 
 var nunjucks = function () {
   return gulp
-    .src("src/*")
+    .src(`${SRC_PATH}/*`)
     .pipe(
       data(function (file) {
         return require("../settings.json");
@@ -36,7 +37,7 @@ var nunjucks = function () {
     )
     .pipe(
       nunjucksRender({
-        path: ["src/templates"],
+        path: [NJK_TEMPLATE_PATH],
         ext: ".html",
         manageEnv,
         envOptions: {
@@ -47,7 +48,7 @@ var nunjucks = function () {
       })
     )
     .pipe(through2.obj(gulpPrettier))
-    .pipe(gulp.dest("dist"));
+    .pipe(gulp.dest(DIST_PATH));
 };
 
 module.exports = nunjucks;
