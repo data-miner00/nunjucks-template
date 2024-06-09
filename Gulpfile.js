@@ -34,7 +34,18 @@ gulp.task("nunjucks", function () {
         return require("./settings.json");
       })
     )
-    .pipe(nunjucks({ path: ["src/templates"], ext: ".html", manageEnv }))
+    .pipe(
+      nunjucks({
+        path: ["src/templates"],
+        ext: ".html",
+        manageEnv,
+        envOptions: {
+          autoescape: false,
+          trimBlocks: true,
+          lstripBlocks: true,
+        },
+      })
+    )
     .pipe(through2.obj(gulpPrettier))
     .pipe(gulp.dest("dist"));
 });
