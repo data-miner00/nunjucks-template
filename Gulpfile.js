@@ -1,6 +1,24 @@
 var gulp = require("gulp");
 var nunjucks = require("gulp-nunjucks-render");
 var data = require("gulp-data");
+var through2 = require("through2");
+var prettier = require("prettier");
+
+var prettierConfig = require("./.prettierrc.json");
+
+function gulpPrettier(file, enc, callback) {
+  if (!file.isBuffer()) {
+    callback(null, file);
+    return;
+  }
+
+  prettier
+    .format(file.contents.toString(), { ...prettierConfig, parser: "html" })
+    .then((contents) => {
+      file.contents = Buffer.from(contents);
+      callback(null, file);
+    });
+}
 
 var manageEnv = function (environment) {
   environment.addFilter("split", function (str, delim) {
@@ -17,6 +35,7 @@ gulp.task("nunjucks", function () {
       })
     )
     .pipe(nunjucks({ path: ["src/templates"], ext: ".html", manageEnv }))
+    .pipe(through2.obj(gulpPrettier))
     .pipe(gulp.dest("dist"));
 });
 
