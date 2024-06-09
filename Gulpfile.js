@@ -3,6 +3,8 @@ var nunjucks = require("gulp-nunjucks-render");
 var data = require("gulp-data");
 var through2 = require("through2");
 var prettier = require("prettier");
+var concat = require("gulp-concat");
+var cssmin = require("gulp-clean-css");
 
 var prettierConfig = require("./.prettierrc.json");
 
@@ -63,4 +65,12 @@ gulp.task("stream", function () {
   return gulp.src("/src/*").pipe(gulp.dest("dist"));
 });
 
-gulp.task("default", gulp.parallel("nunjucks", "manual"));
+gulp.task("cssmin", function () {
+  return gulp
+    .src(["src/styles/**/*.css"])
+    .pipe(concat("styles.css"))
+    .pipe(cssmin({ compatibility: "ie8" }))
+    .pipe(gulp.dest("dist"));
+});
+
+gulp.task("default", gulp.parallel("nunjucks", "cssmin", "manual"));
