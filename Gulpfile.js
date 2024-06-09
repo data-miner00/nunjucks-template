@@ -5,6 +5,7 @@ var through2 = require("through2");
 var prettier = require("prettier");
 var concat = require("gulp-concat");
 var cssmin = require("gulp-clean-css");
+var uglify = require("gulp-uglify");
 
 var prettierConfig = require("./.prettierrc.json");
 
@@ -73,4 +74,12 @@ gulp.task("cssmin", function () {
     .pipe(gulp.dest("dist"));
 });
 
-gulp.task("default", gulp.parallel("nunjucks", "cssmin", "manual"));
+gulp.task("uglify", function () {
+  return gulp
+    .src(["src/scripts/**/*.js"])
+    .pipe(concat("scripts.js"))
+    .pipe(uglify())
+    .pipe(gulp.dest("dist"));
+});
+
+gulp.task("default", gulp.parallel("nunjucks", "cssmin", "uglify", "manual"));

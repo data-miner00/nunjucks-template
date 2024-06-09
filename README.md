@@ -9,3 +9,4 @@ Playing with Njk.
 - [gulp-nunjucks-render](https://npm.im/gulp-nunjucks-render)
 - [gulp-nunjucks](https://npm.im/gulp-nunjucks)
 - [Writing a plugin](https://github.com/gulpjs/gulp/blob/master/docs/writing-a-plugin/README.md)
+- [UglifyJS](https://github.com/mishoo/UglifyJS)
