@@ -29,7 +29,7 @@ var manageEnv = function (environment) {
 
 var nunjucks = function () {
   return gulp
-    .src(`${SRC_PATH}/*`)
+    .src(`${SRC_PATH}/index.njk`)
     .pipe(
       data(function (file) {
         return require("../settings.json");
