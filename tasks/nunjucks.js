@@ -4,6 +4,7 @@ var prettier = require("prettier");
 var through2 = require("through2");
 var data = require("gulp-data");
 var { SRC_PATH, NJK_TEMPLATE_PATH, DIST_PATH } = require("./variables");
+var connect = require("gulp-connect");
 
 var prettierConfig = require("../.prettierrc.json");
 
@@ -48,7 +49,8 @@ var nunjucks = function () {
       })
     )
     .pipe(through2.obj(gulpPrettier))
-    .pipe(gulp.dest(DIST_PATH));
+    .pipe(gulp.dest(DIST_PATH))
+    .pipe(connect.reload());
 };
 
 module.exports = nunjucks;
