@@ -1,17 +1,20 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Nunjucks Template</title>
-        <meta name="author" content="{{author}}">
-        <meta name="description" content="{{description}}">
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        {% include "partials/navbar-partial.njk" %}
-        {% block body %}{% endblock %}
+  <head>
+    <title>Nunjucks Template</title>
+    <meta name="author" content="{{author}}">
+    <meta name="description" content="{{description}}">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    {% include "partials/navbar-partial.njk" %}
+    {% block body %}{% endblock %}
 
-        {% block scripts %}
-            <script>console.log('default scripts');</script>
-            <script type="text/javascript" src="scripts.js"></script>
-        {% endblock %}
-    </body>
+    {% block scripts %}
+      <script>
+        console.log('default scripts');
+      </script>
+      <script type="text/javascript" src="scripts.js"></script>
+    {% endblock %}
+  </body>
 </html>

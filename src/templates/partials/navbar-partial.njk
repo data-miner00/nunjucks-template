@@ -1,16 +1,15 @@
-
 {% if production %}
-<nav>
+  <nav>
     {% for item in navigation -%}
-        {%- if loop.first -%}
+      {%- if loop.first -%}
         <a href="{{item.url}}">First! {{item.name}}</a>
-        {%- elif loop.last -%}
+      {%- elif loop.last -%}
         <a href="{{item.url}}">Last! {{item.name}}</a>
-        {%- else -%}
+      {%- else -%}
         <a href="{{item.url}}">{{item.name}}</a>
-        {%- endif %}
+      {%- endif %}
     {% endfor %}
-</nav>
+  </nav>
 {% else %}
-<nav>Navbar not works!</nav>
+  <nav>Navbar not works!</nav>
 {% endif %}
