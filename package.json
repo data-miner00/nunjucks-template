@@ -1,15 +1,18 @@
 {
   "name": "nunjucks-template",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A Gulp template to work with Nunjucks",
   "scripts": {
     "build": "gulp",
     "tasks": "gulp --tasks"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "gulp",
+    "nunjucks",
+    "css"
+  ],
+  "author": "Shaun Chong <mumk0313@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "gulp": "^5.0.0",
     "gulp-clean-css": "^4.3.0",
