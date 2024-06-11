@@ -1,0 +1,32 @@
+{% set links = [
+  {
+    title: "Home",
+    url: ""
+  }, {
+    title: "Basics",
+    url: "/basics"
+  }, {
+    title: "Demo",
+    url: "/demo"
+  }, {
+    title: "Docs",
+    url: "http://mozilla.github.io/nunjucks/"
+  }
+] %}
+
+{% set logoText = "Nunjucks Template" %}
+
+<header class="py-2">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between">
+    <div class="text-3xl">{{ logoText }}</div>
+    <nav>
+      <ul class="flex gap-8 items-center">
+        {% for link in links %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
