@@ -1,0 +1,9 @@
+<article class="bg-emerald-300 rounded p-4">
+  <h2>
+    <a href="{{ cardUrl }}">{{ cardTitle | safe }}</a>
+  </h2>
+  <div>
+    <img src="{{ cardImageUrl }}" alt="{{ cardImageAlt }}">
+  </div>
+  <div>{{ cardContent | safe }}</div>
+</article>

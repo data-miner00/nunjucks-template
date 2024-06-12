@@ -1,4 +1,46 @@
 {% extends "layout.njk" %}
 {% block body %}
   <h1>Basics</h1>
+
+  <section class="mb-8">
+    <h2>Variables</h2>
+    <p>A variable looks up a value from the template context. If you wanted to simply display a variable, you would do:</p>
+    <pre><code>
+      {% raw %}{{ username }}{% endraw %}
+    </code></pre>
+    <p>This looks up <code>username</code> from the context and displays it. Variable names can have dots in them which lookup properties, just like javascript. You can also use the square bracket syntax.</p>
+    <pre><code>
+      {% raw %}
+        {{ foo.bar }}
+        {{ foo["bar"] }}
+      {% endraw %}
+    </code></pre>
+    <p>These two forms to the exact same thing, just like javascript.</p>
+    <p>
+      If a value is <code>undefined</code> or <code>null</code>, nothing is displayed. The same behavior occurs when referencing undefined or null objects. The following all output nothing if foo is undefined:
+      {% raw %}
+        {{ foo }}, {{ foo.bar }}, {{ foo.bar.baz }}
+      {% endraw %}.
+    </p>
+  </section>
+
+  <section>
+    <h2>Filters</h2>
+    <p>Filters are essentially functions that can be applied to variables. They are called with a pipe operator (<code>|</code>) and can take arguments.</p>
+
+    <pre><code>
+      {% raw %}
+        {{ foo | title }}
+        {{ foo | join(",") }}
+        {{ foo | replace("foo", "bar") | capitalize }}
+      {% endraw %}
+    </code></pre>
+
+    <p>
+      The third example shows how you can chain filters. It would display "Bar", by first replacing "foo" with "bar" and then capitalizing it.
+    </p>
+    <p>
+      Nunjucks comes with several builtin filters, and you can add your own as well.
+    </p>
+  </section>
 {% endblock %}

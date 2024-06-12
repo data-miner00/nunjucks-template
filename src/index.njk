@@ -31,4 +31,35 @@
   </div>
 
   {{ repeatParagraph(10) }}
+
+  {% set cards = [
+    {
+      url: "/",
+      title: "Card First",
+      imgUrl: "https://picsum.photos/200",
+      imgAlt: "Random image",
+      content: "Hello world"
+    }, {
+      url: "/",
+      title: "Card Second",
+      imgUrl: "https://picsum.photos/200",
+      imgAlt: "Random image",
+      content: "Hello world"
+    }, {
+      url: "/",
+      title: "Card Third",
+      imgUrl: "https://picsum.photos/200",
+      imgAlt: "Random image",
+      content: "Hello world"
+    }
+  ] %}
+
+  {% for card in cards %}
+    {% set cardUrl = card.url %}
+    {% set cardTitle = card.title %}
+    {% set cardImageUrl = card.imgUrl %}
+    {% set cardImageAlt = card.imgAlt %}
+    {% set cardContent = card.content %}
+    {% include "partials/card.njk" %}
+  {% endfor %}
 {% endblock %}
